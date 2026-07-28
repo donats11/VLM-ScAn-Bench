@@ -11,7 +11,7 @@ We recommend using a conda environment.
 ```bash
 conda create -n vlm-scan-benchmark python=3.11
 conda activate vlm-scan-benchmark
-pip install -.
+pip install .
 ```
 
 Install pytorch with CUDA, if you want to utilize the GPU.
