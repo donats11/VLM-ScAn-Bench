@@ -11,8 +11,6 @@ RESULTS_DIR="scan_benchmark/vlm/performance_surrogate/results"
 ADDITIONAL_RUNS_PATH="scan_benchmark/vlm/large_runs.csv"
 
 EXPERIMENTS=(
-#    "fit_no_intermediate pred_no_intermediate"
-#    "fit_with_intermediate pred_no_intermediate"
     "fit_with_intermediate pred_with_intermediate"
 )
 
@@ -76,35 +74,35 @@ for SEED in "${SEEDS[@]}"; do
     done
 done
 
-for SEED in "${SEEDS[@]}"; do
-
-    MODEL="autogluon"
-
-    MODEL_OUT_DIR="${RESULTS_DIR}/autogluon"
-
-    FIT_MODE="fit_with_intermediate"
-    PRED_MODE="pred_with_intermediate"
-
-    for FOLD_ID in "${FOLDS[@]}"; do
-
-        OUT_DIR="${MODEL_OUT_DIR}/seed=${SEED}/${FIT_MODE}/${PRED_MODE}/fold_${FOLD_ID}"
-
-        CMD=(
-            python -m "$SCRIPT"
-            --model "$MODEL"
-            --seed "$SEED"
-            --labels val_loss
-            --device "$DEVICE"
-            --out_dir "$OUT_DIR"
-            --train_csv "${SPLITS_DIR}/train_fold_${FOLD_ID}.csv"
-            --test_csv "${SPLITS_DIR}/test_fold_${FOLD_ID}.csv"
-            --include_intermediate_points
-            --eval_on_intermediate_points
-            --additional_runs_path "${ADDITIONAL_RUNS_PATH}"
-        )
-
-        echo "Running: ${CMD[*]}"
-        "${CMD[@]}"
-
-    done
-done
+#for SEED in "${SEEDS[@]}"; do
+#
+#    MODEL="autogluon"
+#
+#    MODEL_OUT_DIR="${RESULTS_DIR}/autogluon"
+#
+#    FIT_MODE="fit_with_intermediate"
+#    PRED_MODE="pred_with_intermediate"
+#
+#    for FOLD_ID in "${FOLDS[@]}"; do
+#
+#        OUT_DIR="${MODEL_OUT_DIR}/seed=${SEED}/${FIT_MODE}/${PRED_MODE}/fold_${FOLD_ID}"
+#
+#        CMD=(
+#            python -m "$SCRIPT"
+#            --model "$MODEL"
+#            --seed "$SEED"
+#            --labels val_loss
+#            --device "$DEVICE"
+#            --out_dir "$OUT_DIR"
+#            --train_csv "${SPLITS_DIR}/train_fold_${FOLD_ID}.csv"
+#            --test_csv "${SPLITS_DIR}/test_fold_${FOLD_ID}.csv"
+#            --include_intermediate_points
+#            --eval_on_intermediate_points
+#            --additional_runs_path "${ADDITIONAL_RUNS_PATH}"
+#        )
+#
+#        echo "Running: ${CMD[*]}"
+#        "${CMD[@]}"
+#
+#    done
+#done

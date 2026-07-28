@@ -22,7 +22,6 @@ data/
 datasets/
 checkpoints/
 openclip_checkpoints/
-results*/
 *.log
 *data*/
 
