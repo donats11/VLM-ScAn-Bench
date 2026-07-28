@@ -18,13 +18,14 @@ Install pytorch with CUDA, if you want to utilize the GPU.
 
 ## Training and evaluation
 
-To train and get the performance results for the surrogate benchmark, run the provided shell scripts. Change DEVICE
+To train and get the main performance results for the surrogate benchmark, run the provided shell scripts. Change DEVICE
 to 'cuda' in train_surrogates.sh to use the GPU.
 
 ### Performance predictor surrogate
 
 ```bash
 bash scan_benchmark/vlm/performance_surrogate/train/train_surrogates.sh
+python -m scan_benchmark.commons.surrogate_evaluation.main_performance
 ```
 
 ### Divergence predictor surrogate
@@ -44,6 +45,13 @@ bash scan_benchmark/vlm/divergence_surrogate/train.sh
 | Ensemble Mix | 0.369 ± 0.091 | 0.954 ± 0.021 |
 | Ensemble XGBoost | 0.350 ± 0.087 | 0.956 ± 0.018 |
 | **TabPFN** | **0.208 ± 0.079** | **0.984 ± 0.009** |
+
+## Extrapolation results
+
+To get the extrapolation results, run the following command:
+```bash
+python -m scan_benchmark.commons.surrogate_evaluation.extrapolation
+```
 
 ## API usage
 

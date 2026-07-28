@@ -95,6 +95,9 @@ class VLMSurrogateDataset(BaseSurrogateDataset):
         return len(self._configs)
 
     def _get_test_bins(self):
+        if "flops_bin" not in self.test_df.columns:
+            return None
+
         return self.test_df["flops_bin"].to_numpy()
 
     def _get_top_performing_configs_per_bin(

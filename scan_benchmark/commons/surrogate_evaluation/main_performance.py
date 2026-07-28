@@ -65,9 +65,9 @@ def summarize_metrics_by_bin_top_performing(root: Path) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    root = Path("../../vlm/performance_surrogate/results")
+    root = Path("scan_benchmark/vlm/performance_surrogate/results")
 
-    summarize_metrics(root).to_csv("../../vlm/performance_surrogate/results/results_summary.csv")
-    summarize_metrics_by_bin(root).to_csv("../../vlm/performance_surrogate/results/results_summary_by_bin.csv")
+    summarize_metrics(root).to_csv("scan_benchmark/vlm/performance_surrogate/results/results_summary.csv")
+    summarize_metrics_by_bin(root).to_csv("scan_benchmark/vlm/performance_surrogate/results/results_summary_by_bin.csv")
     summarize_metrics_by_bin_top_performing(root).to_csv(
-        "../../vlm/performance_surrogate/results/results_summary_by_bin_top_performing.csv")
+        "scan_benchmark/vlm/performance_surrogate/results/results_summary_by_bin_top_performing.csv")
