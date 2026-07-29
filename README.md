@@ -38,19 +38,37 @@ bash scan_benchmark/vlm/divergence_surrogate/train.sh
 
 ### Surrogate Performance
 
-| Model | RMSE ↓ | Spearman ρ ↑ |
-|---|---:|---:|
-| AutoGluon | 0.261 ± 0.081 | 0.978 ± 0.012 |
-| Ensemble LightGBM | 0.416 ± 0.068 | 0.955 ± 0.017 |
-| Ensemble Mix | 0.369 ± 0.091 | 0.954 ± 0.021 |
-| Ensemble XGBoost | 0.350 ± 0.087 | 0.956 ± 0.018 |
-| **TabPFN** | **0.208 ± 0.079** | **0.984 ± 0.009** |
+| Model             |            RMSE ↓ |      Spearman ρ ↑ |
+|-------------------|------------------:|------------------:|
+| AutoGluon         |     0.261 ± 0.081 |     0.978 ± 0.012 |
+| Ensemble LightGBM |     0.416 ± 0.068 |     0.955 ± 0.017 |
+| Ensemble Mix      |     0.369 ± 0.091 |     0.954 ± 0.021 |
+| Ensemble XGBoost  |     0.350 ± 0.087 |     0.956 ± 0.018 |
+| **TabPFN**        | **0.208 ± 0.079** | **0.984 ± 0.009** |
 
 ## Extrapolation results
 
 To get the extrapolation results, run the following command:
+
 ```bash
 python -m scan_benchmark.commons.surrogate_evaluation.extrapolation
+```
+
+## Query time
+
+To see how much time it takes for the API to return responses, please run the script below:
+
+```bash
+python -m scan_benchmark.commons.query_time.query_time
+```
+
+## Feature ablation
+
+To run the feature ablation experiments, run the following command:
+
+```bash
+python -m scan_benchmark.commons.surrogate_evaluation.leave_one_out_ablation
+python -m scan_benchmark.commons.surrogate_evaluation.main_performance --root_dir 'scan_benchmark/vlm/performance_surrogate/ablation_results/' --ablation
 ```
 
 ## API usage

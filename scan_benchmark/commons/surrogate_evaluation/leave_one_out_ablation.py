@@ -4,7 +4,6 @@ from scan_benchmark.commons.train.train_base import run_benchmark
 from scan_benchmark.vlm.performance_surrogate.data import VLMSurrogateDataset
 from scan_benchmark.vlm.performance_surrogate.train.train import parse_args
 
-
 if __name__ == "__main__":
     folds = [1, 2, 3, 4, 5]
     default_features = VLMSurrogateDataset.DEFAULT_FEATURES
@@ -21,10 +20,10 @@ if __name__ == "__main__":
 
             ablation_args.fold = fold
             ablation_args.train_csv = (
-                f"../../vlm/performance_surrogate/splits/train_fold_{fold}.csv"
+                f"scan_benchmark/vlm/performance_surrogate/splits/train_fold_{fold}.csv"
             )
             ablation_args.test_csv = (
-                f"../../vlm/performance_surrogate/splits/test_fold_{fold}.csv"
+                f"scan_benchmark/vlm/performance_surrogate/splits/test_fold_{fold}.csv"
             )
 
             ablation_args.features = [
@@ -34,7 +33,7 @@ if __name__ == "__main__":
             ]
 
             ablation_args.out_dir = (
-                f"ablation_results/"
+                f"scan_benchmark/vlm/performance_surrogate/ablation_results/"
                 f"without_{removed_feature}/"
                 f"fold_{fold}"
             )
