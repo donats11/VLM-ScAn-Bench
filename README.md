@@ -14,6 +14,9 @@ conda activate vlm-scan-benchmark
 pip install .
 ```
 
+After performing this command, the code can be used as a package, and also for local development. The rest of the README
+focuses on local development experiments which reproduce the results.
+
 Install pytorch with CUDA, if you want to utilize the GPU.
 
 ## Training and evaluation
@@ -99,6 +102,12 @@ For additional plottings on comparing the surrogate predictors, run bash sript:
 ```bash
 bash scan_benchmark/commons/plotting/plotting.sh
 ```
+
+To run this script, first experiments over different number of fitted samples should be made. To do that, please comment
+the code on lines 50-51 in here: [base.py](scan_benchmark/commons/predictors_core/base.py), and rerun the main surrogate
+comparison experiments. Additionally, tabpfn
+predictor needs the fit mode not fit_with_cache, but rather fallback to any other option. Comment out line 15 in this
+file: [pfn.py](scan_benchmark/commons/predictors_core/pfn.py).
 
 ## Contributing
 
