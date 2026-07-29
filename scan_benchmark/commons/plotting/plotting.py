@@ -1,9 +1,26 @@
+import argparse
 import json
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--results_root",
+        type=Path,
+        default=Path("scan_benchmark/vlm/performance_surrogate/results"),
+    )
+
+    parser.add_argument(
+        "--plot_root",
+        type=Path,
+        default=Path("."),
+    )
+
+    return parser.parse_args()
 
 def valid_files(root: Path, filename: str):
     for file in root.rglob(f"fold*/{filename}"):
@@ -87,9 +104,12 @@ def plot_learning_curves(df: pd.DataFrame, metric="rmse"):
 
 
 if __name__ == "__main__":
-    root = Path("../../vlm/performance_surrogate/results")
+    args = parse_args()
 
-    df = collect_learning_curves(root)
+    results_root = args.results_root
+    plot_root = args.plot_root
+
+    df = collect_learning_curves(results_root)
     metrics = [
         "rmse",
         "mae",

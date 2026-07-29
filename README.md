@@ -69,6 +69,7 @@ To run the feature ablation experiments, run the following command:
 ```bash
 python -m scan_benchmark.commons.surrogate_evaluation.leave_one_out_ablation
 python -m scan_benchmark.commons.surrogate_evaluation.main_performance --root_dir 'scan_benchmark/vlm/performance_surrogate/ablation_results/' --ablation
+python -m scan_benchmark.commons.plotting.ablation_plotting
 ```
 
 ## API usage
