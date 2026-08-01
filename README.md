@@ -83,6 +83,12 @@ For plottings on comparing the surrogate predictors, run bash script:
 bash scan_benchmark/commons/plotting/plotting.sh
 ```
 
+To run this script, first experiments over different number of fitted samples should be made. To do that, please comment
+the code on lines 50-51 in here: [base.py](scan_benchmark/commons/predictors_core/base.py), and rerun the main surrogate
+comparison experiments. Additionally, tabpfn
+predictor needs the fit mode not fit_with_cache, but rather fallback to any other option. Comment out line 15 in this
+file: [pfn.py](scan_benchmark/commons/predictors_core/pfn.py).
+
 For generating the kendall tau correlation between each metric, run command:
 ```bash
 python -m scan_benchmark.commons.plotting.kendall_correlation
@@ -107,12 +113,6 @@ The repository includes pre-collected configuration-performance datasets used to
 
 A separate repository was used to collect the data. For the full information, please visit
 the [scaling_studies_vlm repo](https://github.com/automl/scaling_studies_vlm).
-
-To run this script, first experiments over different number of fitted samples should be made. To do that, please comment
-the code on lines 50-51 in here: [base.py](scan_benchmark/commons/predictors_core/base.py), and rerun the main surrogate
-comparison experiments. Additionally, tabpfn
-predictor needs the fit mode not fit_with_cache, but rather fallback to any other option. Comment out line 15 in this
-file: [pfn.py](scan_benchmark/commons/predictors_core/pfn.py).
 
 ## Contributing
 
